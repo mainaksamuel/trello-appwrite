@@ -1,7 +1,19 @@
 import { databases } from "@/appwrite";
-import { Board, Column, TypedColumn } from "@/typings";
+import { Board, Column, Todo, TypedColumn } from "@/typings";
 
-export default async function getTodosGroupedByColumn() {
+export async function dbUpdateTodos(todo: Todo, columnId: TypedColumn) {
+  await databases.updateDocument(
+    process.env.NEXT_PUBLIC_DATABASE_ID!,
+    process.env.NEXT_PUBLIC_TODOS_ID!,
+    todo.$id,
+    {
+      title: todo.title,
+      status: columnId,
+    },
+  );
+}
+
+export async function getTodosGroupedByColumn() {
   const data = await databases.listDocuments(
     process.env.NEXT_PUBLIC_DATABASE_ID!,
     process.env.NEXT_PUBLIC_TODOS_ID!,
