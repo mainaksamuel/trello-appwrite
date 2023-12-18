@@ -1,5 +1,3 @@
-import { Models } from "appwrite";
-
 interface Board {
   columns: Map<TypedColumn, Column>;
 }
@@ -17,6 +15,14 @@ interface Todo {
   title: string;
   status: TypedColumn;
   image?: Image;
+}
+
+interface InputTodo {
+  title: string;
+  status: TypedColumn;
+  // json string of the image location on the appwrite bucket.
+  // Obtained after first uploading the image then getting the params
+  image?: string;
 }
 
 interface Image {

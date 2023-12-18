@@ -22,7 +22,6 @@ export default function Board() {
 
   const handleOnDragEnd = (result: DropResult) => {
     const { destination, source, type } = result;
-    /* console.log(destination, source, type); */
 
     // Check if user dragged card outside of board
     if (!destination) return;
