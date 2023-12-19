@@ -1,4 +1,3 @@
-import { Board } from "@/typings";
 import formatTodosForAI from "./formatTodosForAI";
 
 export default async function fetchSuggestion(board: Board) {

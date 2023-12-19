@@ -3,7 +3,6 @@ import { Draggable, Droppable } from "react-beautiful-dnd";
 import TodoCard from "./TodoCard";
 import { useBoardStore } from "@/store/BoardStore";
 import { useModalStore } from "@/store/ModalStore";
-import { Todo, TypedColumn } from "@/typings";
 
 interface BoardColumnProps {
   id: TypedColumn;

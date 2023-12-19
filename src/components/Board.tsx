@@ -4,7 +4,6 @@ import { useBoardStore } from "@/store/BoardStore";
 import { useEffect } from "react";
 import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
 import BoardColumn from "./BoardColumn";
-import { Column } from "@/typings";
 
 export default function Board() {
   const [board, getBoard, setBoardState, updateTodoInDB] = useBoardStore(
@@ -27,11 +26,11 @@ export default function Board() {
     if (!destination) return;
 
     // Handle Column drag
-    if (type == "column") {
-      const entries = Array.from(board.columns.entries());
-      const [removed] = entries.splice(source.index, 1);
-      entries.splice(destination.index, 0, removed);
-      const rearrangedColumns = new Map(entries);
+    if (type === "column") {
+      const colEntries = Array.from(board.columns.entries());
+      const [removed] = colEntries.splice(source.index, 1);
+      colEntries.splice(destination.index, 0, removed);
+      const rearrangedColumns = new Map(colEntries);
       setBoardState({
         ...board,
         columns: rearrangedColumns,
@@ -43,7 +42,7 @@ export default function Board() {
     const startColumnIndex = columns[Number(source.droppableId)];
     const finishColumnIndex = columns[Number(destination.droppableId)];
 
-    const startCol: Column = {
+    const startCol: { id: TypedColumn; todos: Todo[] } = {
       id: startColumnIndex[0],
       todos: startColumnIndex[1].todos,
     };
@@ -59,7 +58,7 @@ export default function Board() {
     const newTodos = startCol.todos;
     const [todoMoved] = newTodos.splice(source.index, 1);
 
-    if (startCol == finishCol) {
+    if (startCol === finishCol) {
       // Same column task drag
       newTodos.splice(destination.index, 0, todoMoved);
       const newCol = {

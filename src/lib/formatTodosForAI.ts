@@ -1,4 +1,3 @@
-import { Board, Todo, TypedColumn } from "@/typings";
 
 export default function formatTodosForAI(board: Board) {
   const todos = Array.from(board.columns.entries());

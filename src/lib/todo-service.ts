@@ -1,5 +1,4 @@
 import { ID, databases, storage } from "@/appwrite";
-import { Board, Column, Image, InputTodo, Todo, TypedColumn } from "@/typings";
 
 // Get Image url
 export async function getImageURL(image: Image) {

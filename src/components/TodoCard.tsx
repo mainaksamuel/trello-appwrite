@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { getImageURL } from "@/lib/todo-service";
 import { useBoardStore } from "@/store/BoardStore";
-import { Todo, TypedColumn } from "@/typings";
 import { XCircleIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import {

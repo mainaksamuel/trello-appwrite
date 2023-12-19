@@ -5,7 +5,6 @@ import {
   dbDeleteTodo,
   dbAddTodo,
 } from "@/lib/todo-service";
-import { Image, Column, Board, Todo, TypedColumn } from "@/typings";
 import { create } from "zustand";
 
 interface BoardState {
